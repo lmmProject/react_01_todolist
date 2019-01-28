@@ -9,6 +9,11 @@ class ToDoList extends React.Component{
             list : [],
             inputValue : ''
         }
+
+        // 提高代码的执行性能
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleBtnClick = this.handleBtnClick.bind(this);
     }
 
     handleBtnClick() {
@@ -36,20 +41,31 @@ class ToDoList extends React.Component{
         })
     }
 
+    // 抽取为函数
+    getToDoItems(){
+        return(
+            this.state.list.map((item, index) => {
+                return (
+                    <ToDoItem 
+                        del={this.handleDelete} 
+                        key={index} content={item} 
+                        index={index}
+                    />
+                );
+            })
+        );
+    }
+
     render(){
         return (
             //  jsx 语法
             <React.Fragment>
                  <div>
-                    <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)} />
-                    <button onClick={this.handleBtnClick.bind(this)}>add</button>
+                    <input value={this.state.inputValue} onChange={this.handleInputChange} />
+                    <button onClick={this.handleBtnClick}>add</button>
                 </div>
                 <ul>
-                    {
-                        this.state.list.map((item, index) => {
-                            return <ToDoItem del={this.handleDelete.bind(this)} key={index} content={item} index={index}/>
-                        })
-                    }
+                    {this.getToDoItems()}
                 </ul>
             </React.Fragment>
         );

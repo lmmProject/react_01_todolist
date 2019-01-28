@@ -6,14 +6,22 @@ import React from 'react';
  */
 class ToDoItem extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
     handleDelete() {
-        this.props.del(this.props.index);
+        const {del, index} = this.props;
+        del(index);
+        // this.props.del(this.props.index);
     }
 
     render(){
+        const {content} = this.props
        return(
         <div onClick={this.handleDelete.bind(this)}>
-            {this.props.content}
+            {content}
         </div>
        ) 
     }
