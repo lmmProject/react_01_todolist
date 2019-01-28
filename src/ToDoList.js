@@ -1,4 +1,5 @@
 import React from 'react'
+import ToDoItem from './ToDoItem'
 
 class ToDoList extends React.Component{
 
@@ -23,7 +24,7 @@ class ToDoList extends React.Component{
         })
     }
 
-    handleItemClick(index) {
+    handleDelete(index){
         // 如果要改变state中的数据，不要直接去操作
         // 我们要首先定一个副本，性能、可调式性都可以达到最优
         const list = [...this.state.list];
@@ -46,7 +47,7 @@ class ToDoList extends React.Component{
                 <ul>
                     {
                         this.state.list.map((item, index) => {
-                            return <li key={index} onClick={this.handleItemClick.bind(this, index)} >{item}</li>
+                            return <ToDoItem del={this.handleDelete.bind(this)} key={index} content={item} index={index}/>
                         })
                     }
                 </ul>
