@@ -7,3 +7,7 @@
 # 代码优化:  
 ## 1.constructor里面做this.handleInputChange = this.handleInputChange.bind(this);  
 ## 2. const {del, index} = this.props; del(index);等价于this.props.del(this.props.index);  
+# CSS演示:  
+## 1.第一层括号,指是一个表达式;第二层括号,指的是一个对象style={{background: 'red'}}  
+## 2.import './style.css'; className  
+## 3.flex布局、特殊需求时,不希望被最外层包裹一个div,则可以使用React.Fragment

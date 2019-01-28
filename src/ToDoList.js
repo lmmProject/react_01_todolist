@@ -1,7 +1,8 @@
-import React from 'react'
-import ToDoItem from './ToDoItem'
+import React, {Component, Fragment} from 'react';
+import ToDoItem from './ToDoItem';
+import './style.css';
 
-class ToDoList extends React.Component{
+class ToDoList extends Component{
 
     constructor(props) {
         super(props);
@@ -59,15 +60,16 @@ class ToDoList extends React.Component{
     render(){
         return (
             //  jsx 语法
-            <React.Fragment>
+            <Fragment>
                  <div>
                     <input value={this.state.inputValue} onChange={this.handleInputChange} />
-                    <button onClick={this.handleBtnClick}>add</button>
+                    {/* 第一层括号,指是一个表达式;第二层括号,指的是一个对象 */}
+                    <button className='white-font' style={{background: 'red'}} onClick={this.handleBtnClick}>add</button>
                 </div>
                 <ul>
                     {this.getToDoItems()}
                 </ul>
-            </React.Fragment>
+            </Fragment>
         );
     }
 }
